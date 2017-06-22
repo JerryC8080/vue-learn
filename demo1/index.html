@@ -1,0 +1,61 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>简单 Vue 页面</title>
+    <script src="https://unpkg.com/vue@2.3.4/dist/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="myapp">
+        <h1>{{appName}}</h1>
+        <p>{{name}}</p>
+        <Btn></Btn>
+        <Bluebtn></Bluebtn>
+    </div>
+
+    <div id="yourapp">
+        <h1>{{appName}}</h1>
+        <p>{{name}}</p>
+        <Btn></Btn>
+    </div>
+
+    <script>
+        Vue.component('Btn', {
+            template: '<button v-on:click="counter += 1">{{counter}}</button>',
+            data: function() {
+                return {
+                    counter: 0
+                }
+            }
+        })
+
+        let myapp = new Vue({
+            el: '#myapp',
+            data: {
+                appName: 'My App',
+                name: 'jc'
+            },
+            components: {
+                'Bluebtn': {
+                    template: '<button v-on:click="counter += 1">{{counter}}</button>',
+                    data: function() {
+                        return {
+                            counter: 0
+                        }
+                    }
+                }
+            }
+        });
+
+        let yourapp = new Vue({
+            el: '#yourapp',
+            data: {
+                appName: 'Your App',
+                name: 'jerryc'
+            }
+        });
+    </script>
+</body>
+
+</html>
